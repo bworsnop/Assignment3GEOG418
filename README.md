@@ -279,7 +279,7 @@ Local spatial autocorrelation gives a Morans I value for each point location sig
 
 
 $$
-I_i = \frac{x_i - \bar{x}}{S_i^2}}\sum{_{j=1}^n}{W_{i,j}(x_j - \bar{x})}\space \space where \space \space S_i^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n-1} 
+I_i = \frac{x_i - \bar{x}}{S_i^2}\sum_{j=1}^n{W_{i,j}(x_j - \bar{x})}\space \space where \space \space S_i^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n-1} 
 $$
 
 Instead of typing out this entire calculation we can use the localmoran() function to perform the calculations for us. We do need to input the variable of interest as well as our determined weighting scheme for this function to work.

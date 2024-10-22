@@ -114,6 +114,7 @@ data <- data.frame(Variable = c("Income", "French Language"),
 
 #Produce table
 kable(data, caption = paste0("Descriptive statistics for selected ", 2016, " census variables"))
+![alt text](https://github.com/bworsnop/Assignment3GEOG418/blob/main/table.png)
 ```
 
 Next, we will be creating maps using the tmap package. First map to create is our median total income map for Nanaimo. We first select the joint information of our census data and boundary polygon and decide on our color pallet, style of pallet, and polygon border color. We also create titles and decide the layout of the maps. We repeat this for the French knowledge map. Lastly, we print the maps side by side using tmap_arrange function.
@@ -145,7 +146,7 @@ map_French <- tm_shape(French_noNA) +
 #Print maps side by side
 tmap_arrange(map_Income, map_French, ncol = 2, nrow = 1)
 ```
-![alt text](https://github.com/[bworsnop]/[Assignment3GEOG418]/blob/[main]/TmMapoverall.jpg?raw=true)
+![alt text](https://github.com/bworsnop/Assignment3GEOG418/blob/main/TmMapoverall.png)
 ## Neighbourhood matrix
 
 A weighted neighbourhood matrix quantifies the relationship between points/features and their neighbouring points/features. The definition of neighbour is subjective however, we have standards when it comes to defining out weighted neighbourhood matrix for spatial analysis. For this study we will be using the Rook and Queen standards.
@@ -205,6 +206,7 @@ IncomeBoth <- tm_shape(Income_noNA) + tm_borders(col='lightgrey') +
 #Print maps in a three pane figure
 tmap_arrange(IncomeQueen, IncomeRook, IncomeBoth, ncol = 3, nrow = 1)
 
+![alt text](https://github.com/bworsnop/Assignment3GEOG418/blob/main/threepane.png)
 ```
 
 Next a weighted matrix is created. We use a binary weighting scheme where each neighbour is given value of 1 and all other polygons are assigned 0. To create a weighted matrix in R we use the “nb2listw” function from the “spdep” library. We apply this function to the vri.nb variable as it contains the neighbour links. To get the function to run even if there is a polygon with zero neighbour links we st “zero.policy” as equal to “TRUE”.
@@ -337,6 +339,7 @@ map_LISA_French <- tm_shape(French_noNA) +
 
 #Plot maps in a 2 pane figure
 tmap_arrange(map_LISA_Income, map_LISA_French, ncol = 2, nrow = 1)
+![alt text](https://github.com/bworsnop/Assignment3GEOG418/blob/main/LocalI_map.png)
 ```
 
 The Local Moran’s I scores for the median total income in Nanaimo show Lantzville, downtown Nanaimo, and Hammond Bay exhibit high Local Moran’s I values indicating positive spatial correlation. The most negative Moran’s I values for Nanaimo were in southern Newcastle indicating negative spatial autocorrelation in this area. For areas with French knowledge the Local Moran’s I value show that Hammond bay has positive spatial autocorrelation due to the high Local Moran’s I values. The areas on negative spatial autocorrelation for French knowledge are not in any particular area.
@@ -348,6 +351,7 @@ These maps are great at showing where the polygons are positively spatially auto
 #Create Moran's I scatter plot for Income
 moran.plot(Income_noNA$`Median total income`, Income.lw, zero.policy=TRUE, spChk=NULL, labels=NULL, xlab="Median Total Income ($)", 
            ylab="Spatially Lagged Median Total Income ($)", quiet=NULL)
+![alt text](https://github.com/bworsnop/Assignment3GEOG418/blob/main/income_plot.png)
 ```
 
 
@@ -355,6 +359,7 @@ moran.plot(Income_noNA$`Median total income`, Income.lw, zero.policy=TRUE, spChk
 #Create Moran's I scatter plot for French
 moran.plot(French_noNA$PercFrench, French.lw, zero.policy=TRUE, spChk=NULL, labels=NULL, xlab="Respondants with knowledge of French (%)", 
            ylab="Spatially Lagged knowledge of French (%)", quiet=NULL)
+![alt text](https://github.com/bworsnop/Assignment3GEOG418/blob/main/french_plot.png)
 ```
 
 Both of these plots show clustering in our variables. The diamonds are points that are considered statistically significant (95% confidence). The total median income scatter plot shows a even slope showing high similarity between our data points and each of their neighbours. The respondents with knowledge of French scatter plot shows that our data is skewed so that census tracks are more similar to their neighbours than dissimilar. The slope if also shallow indicating that it is not as strong of clustering.

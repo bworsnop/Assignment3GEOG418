@@ -362,6 +362,7 @@ moran.plot(Income_noNA$`Median total income`, Income.lw, zero.policy=TRUE, spChk
 moran.plot(French_noNA$PercFrench, French.lw, zero.policy=TRUE, spChk=NULL, labels=NULL, xlab="Respondants with knowledge of French (%)", 
            ylab="Spatially Lagged knowledge of French (%)", quiet=NULL)
 ```
+
 ![alt text](https://github.com/bworsnop/Assignment3GEOG418/blob/main/french_plot.png)
 
 Both of these plots show clustering in our variables. The diamonds are points that are considered statistically significant (95% confidence). The total median income scatter plot shows a even slope showing high similarity between our data points and each of their neighbours. The respondents with knowledge of French scatter plot shows that our data is skewed so that census tracks are more similar to their neighbours than dissimilar. The slope if also shallow indicating that it is not as strong of clustering.
